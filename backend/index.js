@@ -1,3 +1,4 @@
+
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
@@ -41,3 +42,4 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/codeGoDb'
     });
   })
   .catch(err => console.error('MongoDB connection error:', err));
+
