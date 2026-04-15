@@ -34,7 +34,7 @@ setupSockets(io);
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/codeGoDb')
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB');
     server.listen(PORT, () => {
