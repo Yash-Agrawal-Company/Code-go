@@ -1,12 +1,16 @@
-import Login from "./Authentication/Login"
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LaunchScreen from "./Screens/LaunchScreen";
+import Login from "./Authentication/Login";
 
 function App() {
   return (
-    <div className="App">
-       <Login />
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LaunchScreen />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
