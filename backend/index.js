@@ -2,8 +2,11 @@ import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
 import mongoose from 'mongoose';
-
-
+import cors from 'cors';
+import dotenv from 'dotenv';
+import authRoutes from './routes/authRoutes.js';
+import roomRoutes from './routes/roomRoutes.js';
+import setupSockets from './sockets/socketHandler.js';
 
 dotenv.config();
 
@@ -26,6 +29,7 @@ app.use('/api/rooms', roomRoutes);
 // Socket setup
 setupSockets(io);
 
+//
 
 const PORT = process.env.PORT || 5000;
 
