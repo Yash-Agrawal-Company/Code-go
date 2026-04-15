@@ -5,8 +5,8 @@ import io from 'socket.io-client';
 import Editor from '@monaco-editor/react';
 import { Users, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const SOCKET_SERVER_URL = 'http://localhost:5000';
+  
+const SOCKET_SERVER_URL = 'import.meta.env.VITE_API_URL';
 
 export default function EditorPage() {
   const { roomId } = useParams();
