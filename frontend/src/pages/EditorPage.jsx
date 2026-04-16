@@ -23,20 +23,30 @@ export default function EditorPage() {
   const decorationsRef = useRef([]);
 
   // Socket initialization
-  useEffect(() => {
-    const newSocket = io(SOCKET_SERVER_URL);
-    setSocket(newSocket);
+useEffect(() => {
+  const newSocket = io(SOCKET_SERVER_URL, {
+    transports: ["websocket"],
+  });
+
+  newSocket.on("connect", () => {
+    console.log("Connected:", newSocket.id);
 
     newSocket.emit('join-room', { roomId, user });
 
-    // Ensure current user is in active users
     setActiveUsers([{ socketId: newSocket.id, user }]);
+  });
 
-    return () => {
-      newSocket.emit('leave-room', { roomId, user });
-      newSocket.disconnect();
-    };
-  }, [roomId, user]);
+  newSocket.on("connect_error", (err) => {
+    console.error("Socket error:", err);
+  });
+
+  setSocket(newSocket);
+
+  return () => {
+    newSocket.emit('leave-room', { roomId, user });
+    newSocket.disconnect();
+  };
+}, [roomId, user]);
 
   // Socket events
   useEffect(() => {
