@@ -42,17 +42,19 @@ export default function DashboardPage() {
   const handleJoinRequested = async (e) => {
     e.preventDefault();
     if (!joinRoomId) return;
-    navigate(`/editor/${joinRoomId}`); 
+    navigate(`/editor/${joinRoomId}`); // We will handle join flow in the EditorPage itself if unauthorized
   };
 
   return (
     <div className="min-h-screen bg-slate-900 text-white flex">
+      {/* Sidebar */}
       <aside className="w-64 bg-slate-900 border-r border-slate-800 p-6 flex flex-col">
         <div className="flex items-center gap-2 mb-10 text-blue-400 font-bold text-xl">
           <LayoutDashboard /> Dashboard
         </div>
         
         <div className="flex-1 space-y-4">
+           {/* Sidebar navigation items can go here */}
         </div>
 
         <div className="mt-auto border-t border-slate-800 pt-6">
@@ -71,7 +73,7 @@ export default function DashboardPage() {
         </div>
       </aside>
 
-      
+      {/* Main Content */}
       <main className="flex-1 p-10 overflow-y-auto w-full relative">
         <header className="flex justify-between items-center mb-12">
           <h1 className="text-3xl font-bold">Your Workspaces</h1>

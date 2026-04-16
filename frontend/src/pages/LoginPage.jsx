@@ -64,6 +64,8 @@ export default function LoginPage() {
               <input 
                 type="text" 
                 required
+                minLength="3"
+                maxLength="30"
                 className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                 value={formData.name}
                 onChange={e => setFormData({...formData, name: e.target.value})}
@@ -76,6 +78,7 @@ export default function LoginPage() {
             <input 
               type="email" 
               required
+              maxLength="50"
               className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
               value={formData.email}
               onChange={e => setFormData({...formData, email: e.target.value})}
@@ -87,6 +90,8 @@ export default function LoginPage() {
             <input 
               type="password" 
               required
+              minLength="6"
+              maxLength="20"
               className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
               value={formData.password}
               onChange={e => setFormData({...formData, password: e.target.value})}
